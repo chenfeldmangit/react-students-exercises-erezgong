@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
+import LeftMenu from "./left-menu/LeftMenu";
 
 function App() {
   return (
     <div className="App">
-      <h1>
-        Hello Gong!
-      </h1>
+        <LeftMenu/>
     </div>
   );
 }

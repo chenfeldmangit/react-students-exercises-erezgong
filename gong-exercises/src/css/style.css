@@ -1,0 +1,319 @@
+body {
+  font-family: Calibri;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+@media only screen and (min-width: 375px) and (max-width: 811px) and (-webkit-min-device-pixel-ratio: 3) {
+  body {
+    font-size: 5px;
+  }
+}
+body .side-menu {
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+}
+body .big-button {
+  display: flex;
+  justify-content: center;
+  border-radius: 1em;
+  background-color: dodgerblue;
+  width: 5.2em;
+  height: 1.7em;
+  font-size: 2em;
+  font-weight: bold;
+}
+body .big-button .caption {
+  font-family: inherit;
+  line-height: 1;
+  color: white;
+  height: 1em;
+  align-self: center;
+}
+body .small-button {
+  display: flex;
+  justify-content: center;
+  border-radius: 1em;
+  background-color: dodgerblue;
+  width: 6em;
+  height: 2em;
+}
+body .small-button .caption {
+  font-family: inherit;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+}
+body #left-menu {
+  width: 20%;
+}
+body #left-menu .list {
+  display: flex;
+  flex-direction: column;
+}
+body #left-menu .logo {
+  width: 5em;
+  height: 5em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+body #left-menu .item {
+  display: flex;
+  align-items: center;
+  border: 0;
+  width: 14em;
+  padding: 0.25em;
+  margin-bottom: 1em;
+}
+body #left-menu .item:hover {
+  border-radius: 1em;
+  background-color: #beeaff;
+}
+body #left-menu .item .icon {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin-left: 1em;
+}
+body #left-menu .item .caption {
+  font-size: 1.3em;
+  float: right;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 1em;
+}
+body #left-menu .tweet {
+  margin-left: 0.1em;
+  width: 7em;
+}
+body .profile {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  margin-right: 2em;
+}
+body .main {
+  flex-direction: column;
+  width: 55%;
+}
+body .main .title {
+  font-weight: bold;
+  font-size: 2.2em;
+  margin: 0.5em;
+}
+body .feed {
+  display: flex;
+  flex-direction: column;
+}
+body .feed .tweet {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  padding: 2em;
+}
+body .feed .tweet .tweet-body {
+  display: flex;
+}
+body .feed .tweet .interaction {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  padding-left: 6em;
+  padding-right: 6em;
+}
+body .feed .tweet .interaction .icon {
+  width: 2em;
+  height: 2em;
+}
+body .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5em;
+  height: 2.5em;
+}
+body .icon-wrapper:hover {
+  border-radius: 1em;
+  background-color: #beeaff;
+}
+body #home {
+  display: flex;
+}
+body #home .status-container {
+  margin-bottom: 4em;
+}
+body #home .status-container .status {
+  display: flex;
+  vertical-align: middle;
+}
+body #home .status-container .status textarea {
+  font-family: inherit;
+}
+body #home .status-container .interaction {
+  display: flex;
+  margin-top: 1em;
+}
+body #home .status-container .interaction .icon-wrapper {
+  margin-right: 1em;
+}
+body #home .status-container .interaction .icon-wrapper .icon {
+  width: 2em;
+  height: 2em;
+}
+body #home .status-container .interaction .tweet {
+  margin-left: 9em;
+}
+body #profile {
+  display: none;
+}
+body #profile .info {
+  display: flex;
+  flex-direction: column;
+}
+body #profile .info .info-cover .cover {
+  width: 100%;
+  height: 100%;
+}
+body #profile .info .info-profile {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  height: 7em;
+}
+body #profile .info .info-profile .profile {
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
+  border: 0.5em solid white;
+  position: relative;
+  margin-left: 2em;
+  top: -6em;
+}
+body #profile .info .info-profile .edit-profile {
+  margin-top: 0.2em;
+  margin-right: 0.2em;
+}
+body #profile .info .info-bottom {
+  display: flex;
+  flex-direction: column;
+}
+body #profile .info .info-bottom .bio {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+}
+body #profile .info .info-bottom .bio .name {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+body #profile .info .info-bottom .bio .joined {
+  display: flex;
+}
+body #profile .info .info-bottom .bio .joined .calendar {
+  width: 1em;
+  height: 1em;
+}
+body #profile .info .info-bottom .bio .joined .joined-start {
+  margin-right: 0.3em;
+}
+body #profile .info .info-bottom .bio .follow {
+  display: flex;
+}
+body #profile .info .info-bottom .bio .follow .unit {
+  margin-right: 1em;
+}
+body #profile .info .info-bottom .bio .follow .unit .count {
+  font-weight: bold;
+}
+body #profile .tabs {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+body #profile .tabs .tab {
+  font-size: 2em;
+  float: right;
+  font-weight: bold;
+  vertical-align: middle;
+}
+body #right-menu {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+body #right-menu .search {
+  display: flex;
+  flex-direction: column;
+}
+body #right-menu .search .box {
+  width: 80%;
+}
+body #right-menu .trends {
+  display: flex;
+  flex-direction: column;
+}
+body #right-menu .trends .trend {
+  font-weight: bold;
+}
+body .overlay-background {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+}
+body .overlay-background .overlay-window {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+  width: 40%;
+  height: 60%;
+  border-radius: 1em;
+  transform: translate(-50%, -50%);
+}
+body #edit-profile .header {
+  display: flex;
+  justify-content: space-between;
+}
+body #edit-profile .header .header-item {
+  margin: 0.5em;
+}
+body #edit-profile .header .icon {
+  width: 2em;
+  height: 2em;
+  margin-right: 1em;
+}
+body #edit-profile .form {
+  display: flex;
+  flex-direction: column;
+}
+body #edit-profile .form .form-item {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+body #edit-profile .form .form-item .counter {
+  align-self: flex-end;
+}
+body #loading {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+body #loading img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3em;
+  height: 3em;
+  transform: translate(-50%, -50%);
+}
+
+/*# sourceMappingURL=style.css.map */

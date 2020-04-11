@@ -1,4 +1,4 @@
-class Tweet {
+export class Tweet {
     constructor(id, profile, author, text, liked){
         this.id = id;
         this.profile = profile;
@@ -7,3 +7,5 @@ class Tweet {
         this.liked = liked;
     }
 }
+
+export default Tweet;

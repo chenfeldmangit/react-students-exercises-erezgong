@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import LeftMenuItem from './LeftMenuItem';
-import '../css/style.css';
 import BugButton from "./BigButton";
 
 class LeftMenu extends Component {

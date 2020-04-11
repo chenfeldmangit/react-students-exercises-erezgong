@@ -1,7 +1,6 @@
 const tweetsKey = "tweets";
 const userDataKey = "userData";
 
-
 window.onload = async () => {
     localStorage.setItem(tweetsKey, JSON.stringify(initialTweets));
     localStorage.setItem(userDataKey, JSON.stringify(initialUserData));

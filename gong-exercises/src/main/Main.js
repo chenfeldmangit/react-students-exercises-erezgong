@@ -10,38 +10,51 @@ class Main extends Component {
         super(props);
         localStorage.setItem(TweetAPI.tweetsKey, JSON.stringify(TweetAPI.initialTweets));
         localStorage.setItem(UserData.userDataKey, JSON.stringify(UserData.initialUserData));
-        this.state = {tweets: []};
+        this.state = {tweets: [], loading: true};
     }
 
+    refreshTweets = async () => {
+        this.setState({tweets: await TweetAPI.getTweets(this.state.filter), loading: false});
+    };
+
     componentDidMount = async () => {
-        this.setState({tweets: await TweetAPI.getTweets(this.props.filter)});
+        this.refreshTweets();
     };
 
     addTweetHandler = async (tweet) => {
         await TweetAPI.addTweet(tweet);
-        this.setState({tweets: await TweetAPI.getTweets(this.props.filter)});
+        this.refreshTweets();
     };
 
     likeTweetHandler = async (tweetId) => {
         await TweetAPI.likeTweet(tweetId);
-        this.setState({tweets: await TweetAPI.getTweets(this.props.filter)});
+        this.refreshTweets();
     };
 
     deleteTweetHandler = async (tweetId) => {
         await TweetAPI.deleteTweet(tweetId);
-        this.setState({tweets: await TweetAPI.getTweets(this.props.filter)});
+        this.refreshTweets();
+    };
+
+    filterTweets = (tweets, filter) => {
+        if (filter !== undefined){
+            tweets = tweets.filter(tweet => tweet.text.includes(filter));
+        }
+        return tweets;
     };
 
     render() {
         return (
             <>
-                {this.props.currentPage === "Home" && <Home tweets={this.state.tweets}
+                {this.props.currentPage === "Home" && <Home tweets={this.filterTweets(this.state.tweets, this.props.filter)}
                                                             addTweetHandler={this.addTweetHandler}
                                                             likeTweetHandler={this.likeTweetHandler}
-                                                            deleteTweetHandler={this.deleteTweetHandler}/>}
-                {this.props.currentPage === "Profile" && <Profile tweets={this.state.tweets}
+                                                            deleteTweetHandler={this.deleteTweetHandler}
+                                                            loading={this.state.loading}/>}
+                {this.props.currentPage === "Profile" && <Profile tweets={this.filterTweets(this.state.tweets, this.props.filter)}
                                                                   likeTweetHandler={this.likeTweetHandler}
-                                                                  deleteTweetHandler={this.deleteTweetHandler}/>}
+                                                                  deleteTweetHandler={this.deleteTweetHandler}
+                                                                  loading={this.state.loading}/>}
             </>
         );
     }

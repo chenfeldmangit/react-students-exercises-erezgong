@@ -10,7 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             currentPage: "Home",
-            filter: ""
+            filter: undefined
         };
     }
 
@@ -18,15 +18,15 @@ class App extends Component {
         this.setState({currentPage: page});
     };
 
-    searchHandler = (filter) => {
-        this.setState({filter: filter});
+    searchHandler = (event) => {
+        this.setState({filter: event.target.value});
     };
 
     render() {
         return (
             <div className="App">
                 <LeftMenu navigationHandler={this.navigationHandler}/>
-                <Main currentPage={this.state.currentPage}/>
+                <Main currentPage={this.state.currentPage} filter={this.state.filter}/>
                 <RightMenu searchHandler={this.searchHandler}/>
             </div>
         );

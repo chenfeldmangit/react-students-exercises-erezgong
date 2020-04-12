@@ -9,13 +9,13 @@ class Home extends Component {
         this.state = {status: ""};
     }
 
-    statusHandler = (event) => {
+    statusBoxHandler = (event) => {
         this.setState({status: event.target.value});
     };
 
     cleanStatus = () => {
         this.setState({status: ""});
-    }
+    };
 
     render() {
         return (
@@ -25,7 +25,7 @@ class Home extends Component {
                     <div className="status">
                         <img className="profile" src="../assets/profile.jpg" alt="profile"/>
                         <textarea className="box" rows="5" cols="50" placeholder="What's happening?"
-                                  value={this.state.status} onChange={this.statusHandler}/>
+                                  value={this.state.status} onChange={this.statusBoxHandler}/>
                     </div>
                     <div className="interaction">
                         <div className="icon-wrapper">
@@ -57,7 +57,9 @@ class Home extends Component {
                 </div>
                 <Feed tweets={this.props.tweets}
                       likeTweetHandler={this.props.likeTweetHandler}
-                      deleteTweetHandler={this.props.deleteTweetHandler}/>
+                      deleteTweetHandler={this.props.deleteTweetHandler}
+                      loading={this.props.loading}
+                />
             </div>
         );
     }

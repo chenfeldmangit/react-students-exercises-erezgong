@@ -6,6 +6,10 @@ class Feed extends Component {
     render() {
         return (
             <div className="feed">
+                {this.props.loading &&
+                <div id="loading">
+                    <img src="../assets/loading.gif" alt="loading"/>
+                </div>}
                 {this.props.tweets.map(tweet => {
                     return <TweetItem key={tweet.id} data={tweet} likeTweetHandler={this.props.likeTweetHandler} deleteTweetHandler={this.props.deleteTweetHandler}/>
                 })}
@@ -17,7 +21,8 @@ class Feed extends Component {
 Feed.propTypes = {
     tweets: PropTypes.array.isRequired,
     likeTweetHandler: PropTypes.func.isRequired,
-    deleteTweetHandler: PropTypes.func.isRequired
+    deleteTweetHandler: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired
 };
 
 export default Feed;

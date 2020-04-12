@@ -7,7 +7,7 @@ class RightMenu extends Component {
             <div id="right-menu" className="side-menu">
                 <div className="search">
                     <h3>Search</h3>
-                    <textarea className="box" placeholder="Search twitter..."></textarea>
+                    <textarea className="box" placeholder="Search twitter..." onChange={this.props.searchHandler}/>
                 </div>
                 <div className="trends">
                     <h3>Trends for you</h3>

@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class TweetItem extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="tweet" data-id={this.props.data.id}>

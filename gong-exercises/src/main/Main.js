@@ -21,17 +21,17 @@ class Main extends Component {
         this.refreshTweets();
     };
 
-    addTweetHandler = async (tweet) => {
+    addTweet = async (tweet) => {
         await TweetAPI.addTweet(tweet);
         this.refreshTweets();
     };
 
-    likeTweetHandler = async (tweetId) => {
+    likeTweet = async (tweetId) => {
         await TweetAPI.likeTweet(tweetId);
         this.refreshTweets();
     };
 
-    deleteTweetHandler = async (tweetId) => {
+    deleteTweet = async (tweetId) => {
         await TweetAPI.deleteTweet(tweetId);
         this.refreshTweets();
     };
@@ -47,13 +47,13 @@ class Main extends Component {
         return (
             <>
                 {this.props.currentPage === "Home" && <Home tweets={this.filterTweets(this.state.tweets, this.props.filter)}
-                                                            addTweetHandler={this.addTweetHandler}
-                                                            likeTweetHandler={this.likeTweetHandler}
-                                                            deleteTweetHandler={this.deleteTweetHandler}
+                                                            addTweetHandler={this.addTweet}
+                                                            likeTweetHandler={this.likeTweet}
+                                                            deleteTweetHandler={this.deleteTweet}
                                                             loading={this.state.loading}/>}
                 {this.props.currentPage === "Profile" && <Profile tweets={this.filterTweets(this.state.tweets, this.props.filter)}
-                                                                  likeTweetHandler={this.likeTweetHandler}
-                                                                  deleteTweetHandler={this.deleteTweetHandler}
+                                                                  likeTweetHandler={this.likeTweet}
+                                                                  deleteTweetHandler={this.deleteTweet}
                                                                   loading={this.state.loading}/>}
             </>
         );

@@ -9,7 +9,7 @@ class Home extends Component {
         this.state = {status: ""};
     }
 
-    statusBoxHandler = (event) => {
+    statusBoxChange = (event) => {
         this.setState({status: event.target.value});
     };
 
@@ -25,7 +25,7 @@ class Home extends Component {
                     <div className="status">
                         <img className="profile" src="../assets/profile.jpg" alt="profile"/>
                         <textarea className="box" rows="5" cols="50" placeholder="What's happening?"
-                                  value={this.state.status} onChange={this.statusBoxHandler}/>
+                                  value={this.state.status} onChange={this.statusBoxChange}/>
                     </div>
                     <div className="interaction">
                         <div className="icon-wrapper">

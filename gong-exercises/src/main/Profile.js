@@ -7,15 +7,29 @@ import EditProfile from "./EditProfile";
 class Profile extends Component {
     constructor(props) {
         super(props);
-        this.state = {userData: {}};
+        this.state = {userData: {}, editingProfile: false};
     }
 
     componentDidMount() {
         this.setState({userData: JSON.parse(localStorage.getItem(UserData.userDataKey))});
     }
 
-    updateUserData = (name, tag) => {
-        this.setState({userData: {name: name, tag: tag}});
+    startEditProfile = () => {
+        this.setState({editingProfile: true})
+    };
+
+    cancelEditProfile = () => {
+        this.setState({editingProfile: false})
+    };
+
+    saveEditProfile = (name, tag) => {
+        this.setState((state, props) => {
+            let newUserData = state.userData;
+            newUserData.name = name;
+            newUserData.tag = tag;
+            return {userData: newUserData};
+        });
+        this.cancelEditProfile();
     };
 
     render() {
@@ -29,7 +43,7 @@ class Profile extends Component {
                         </div>
                         <div className="info-profile">
                             <img className="profile" src={this.state.userData.profile}/>
-                            <div id="start-edit-profile" className="edit-profile big-button">
+                            <div id="start-edit-profile" className="edit-profile big-button" onClick={this.startEditProfile}>
                                 <span className="caption">Edit Profile</span>
                             </div>
                         </div>
@@ -74,7 +88,9 @@ class Profile extends Component {
                           deleteTweetHandler={this.props.deleteTweetHandler}
                           loading={this.props.loading}/>
                 </div>
-                <EditProfile userData={this.state.userData}/>
+                {this.state.editingProfile && <EditProfile userData={this.state.userData}
+                                                           saveEditProfileHandler={this.saveEditProfile}
+                                                           cancelEditProfileHandler={this.cancelEditProfile}/>}
             </>
         );
     }

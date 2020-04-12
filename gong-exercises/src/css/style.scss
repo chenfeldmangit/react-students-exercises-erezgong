@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
+  text-align: left;
 
   @include font($iphone-x-width, $iphone-x-height) {
     font-size: 5px;
@@ -66,6 +67,7 @@
       height: 5em;
       margin-left: 1em;
       margin-bottom: 1em;
+      display: flex;
     }
 
     .item {
@@ -200,7 +202,7 @@
   }
 
   #profile {
-    display: none;
+    display: flex;
 
     .info {
       display: flex;

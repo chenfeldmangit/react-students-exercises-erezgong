@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class TweetItem extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="tweet" data-id={this.props.data.id}>
@@ -29,8 +33,8 @@ class TweetItem extends Component {
                             </g>
                         </svg>
                     </div>
-                    <div className="like-tweet-icon icon-wrapper">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="icon">
+                    <div className="like-tweet-icon icon-wrapper" onClick={() => this.props.likeTweetHandler(this.props.data.id)}>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="icon" fill={this.props.data.liked ? "red" : "black"}>
                             <g>
                                 <path
                                     d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"/>
@@ -47,7 +51,7 @@ class TweetItem extends Component {
                             </g>
                         </svg>
                     </div>
-                    <div className="delete-tweet-icon icon-wrapper">
+                    <div className="delete-tweet-icon icon-wrapper" onClick={() => this.props.deleteTweetHandler(this.props.data.id)}>
                         <svg viewBox="-40 0 427 427.00131" xmlns="http://www.w3.org/2000/svg" className="icon">
                             <path
                                 d="m232.398438 154.703125c-5.523438 0-10 4.476563-10 10v189c0 5.519531 4.476562 10 10 10 5.523437 0 10-4.480469 10-10v-189c0-5.523437-4.476563-10-10-10zm0 0"/>
@@ -66,7 +70,7 @@ class TweetItem extends Component {
 }
 
 const tweetType = PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     profile: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -74,7 +78,9 @@ const tweetType = PropTypes.shape({
 });
 
 TweetItem.propTypes = {
-    data: tweetType.isRequired
+    data: tweetType.isRequired,
+    likeTweetHandler: PropTypes.func.isRequired,
+    deleteTweetHandler: PropTypes.func.isRequired
 };
 
 export default TweetItem;

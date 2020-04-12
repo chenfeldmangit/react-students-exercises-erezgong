@@ -8,14 +8,14 @@ class LeftMenu extends Component {
             <div id="left-menu" className="side-menu">
                 <img className="logo" src="../assets/logo.svg" alt="twitter-logo"/>
                     <div className="list">
-                        <LeftMenuItem icon="../assets/home/side-menu/home-icon.svg" caption="Home"/>
-                        <LeftMenuItem icon="../assets/home/side-menu/explore-icon.svg" caption="Explore"/>
-                        <LeftMenuItem icon="../assets/home/side-menu/notifications-icon.svg" caption="Notifications"/>
-                        <LeftMenuItem icon="../assets/home/side-menu/messages-icon.svg" caption="Messages"/>
-                        <LeftMenuItem icon="../assets/home/side-menu/bookmarks-icon.svg" caption="Bookmarks"/>
-                        <LeftMenuItem icon="../assets/home/side-menu/lists-icon.svg" caption="Lists"/>
-                        <LeftMenuItem icon="../assets/profile.jpg" caption="Profile"/>
-                        <LeftMenuItem icon="../assets/home/side-menu/more-icon.svg" caption="More"/>
+                        <LeftMenuItem icon="../assets/home/side-menu/home-icon.svg" caption="Home" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/home/side-menu/explore-icon.svg" caption="Explore" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/home/side-menu/notifications-icon.svg" caption="Notifications" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/home/side-menu/messages-icon.svg" caption="Messages" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/home/side-menu/bookmarks-icon.svg" caption="Bookmarks" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/home/side-menu/lists-icon.svg" caption="Lists" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/profile.jpg" caption="Profile" navigationHandler={this.props.navigationHandler}/>
+                        <LeftMenuItem icon="../assets/home/side-menu/more-icon.svg" caption="More" navigationHandler={this.props.navigationHandler}/>
                         <BugButton caption="Tweet"/>
                     </div>
             </div>

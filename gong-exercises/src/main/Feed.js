@@ -1,23 +1,13 @@
 import React, {Component} from 'react';
-import TweetAPI from "./TweetAPI";
 import TweetItem from "./TweetItem";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class Feed extends Component {
-    constructor(props){
-        super(props);
-        this.state = {tweets: []};
-    }
-
-    componentDidMount = async () => {
-        this.setState({tweets: await TweetAPI.getTweets(this.props.filter)});
-    };
-
     render() {
         return (
             <div className="feed">
-                {this.state.tweets.map(tweet => {
-                    return <TweetItem data={tweet}/>
+                {this.props.tweets.map(tweet => {
+                    return <TweetItem key={tweet.id} data={tweet} likeTweetHandler={this.props.likeTweetHandler} deleteTweetHandler={this.props.deleteTweetHandler}/>
                 })}
             </div>
         );
@@ -25,7 +15,9 @@ class Feed extends Component {
 }
 
 Feed.propTypes = {
-    filter: PropTypes.string
+    tweets: PropTypes.array.isRequired,
+    likeTweetHandler: PropTypes.func.isRequired,
+    deleteTweetHandler: PropTypes.func.isRequired
 };
 
 export default Feed;

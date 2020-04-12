@@ -1,4 +1,4 @@
-class Constants {
+class UserData {
     static userDataKey = "userData";
     static initialUserData = {
         "cover": "../assets/profile/cover.jpg",
@@ -11,4 +11,4 @@ class Constants {
     };
 }
 
-export default Constants;
+export default UserData;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class RightMenu extends Component {
     render() {
@@ -21,6 +22,8 @@ class RightMenu extends Component {
     }
 }
 
-RightMenu.propTypes = {};
+RightMenu.propTypes = {
+    searchHandler: PropTypes.func.isRequired
+};
 
 export default RightMenu;

@@ -9,7 +9,7 @@ class LeftMenuItem extends Component {
 
     render() {
         return (
-            <div className="item" id={this.id}>
+            <div className="item" id={this.id} onClick={() => this.props.navigationHandler(this.props.caption)}>
                 <img className="icon" src={this.props.icon} alt={this.props.caption}/>
                 <span className="caption">{this.props.caption}</span>
             </div>

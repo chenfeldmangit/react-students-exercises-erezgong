@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
+  text-align: left;
 }
 @media only screen and (min-width: 375px) and (max-width: 811px) and (-webkit-min-device-pixel-ratio: 3) {
   .App {
@@ -58,6 +59,7 @@
   height: 5em;
   margin-left: 1em;
   margin-bottom: 1em;
+  display: flex;
 }
 .App #left-menu .item {
   display: flex;
@@ -166,7 +168,7 @@
   margin-left: 9em;
 }
 .App #profile {
-  display: none;
+  display: flex;
 }
 .App #profile .info {
   display: flex;

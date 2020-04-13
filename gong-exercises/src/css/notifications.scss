@@ -1,0 +1,42 @@
+@import "constants";
+
+.App {
+  #notifications {
+    .list {
+      display: flex;
+      flex-direction: column;
+
+      .notification {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid;
+        padding: 1em;
+
+        .notification-icons {
+          display: flex;
+
+          .icon {
+            width: 2em;
+            height: 2em;
+            margin-top: 1em;
+            border-radius: 50%;
+          }
+        }
+
+        .notification-title {
+          display: flex;
+
+          .owner {
+            font-weight: bold;
+            margin-right: 0.3em;
+          }
+        }
+
+        .content {
+          color: dimgrey;
+        }
+      }
+    }
+
+  }
+}

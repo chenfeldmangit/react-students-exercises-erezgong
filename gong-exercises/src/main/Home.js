@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Feed from "./Feed";
 import PropTypes from "prop-types";
-import {Tweet} from "./Tweet";
+import TweetDTO from "./dto/TweetDTO";
 import MainTitle from "./MainTitle";
 
 class Home extends Component {
@@ -43,7 +43,7 @@ class Home extends Component {
                         </div>
                         <div id="add-tweet" className="small-button tweet" onClick={() => {
                             this.props.addTweetHandler(
-                                new Tweet(
+                                new TweetDTO(
                                     undefined,
                                     "assets/profile.jpg",
                                     "Erez Bizo",

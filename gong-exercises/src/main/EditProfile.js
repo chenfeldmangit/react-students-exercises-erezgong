@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import Feed from "./Feed";
-import Home from "./Home";
-import UserData from "./UserData";
 import PropTypes from "prop-types";
-import Profile from "./Profile";
 
 class EditProfile extends Component {
     constructor(props) {

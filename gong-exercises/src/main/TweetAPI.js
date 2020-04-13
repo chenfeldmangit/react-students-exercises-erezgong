@@ -1,19 +1,19 @@
-import Tweet from "./Tweet";
+import TweetDTO from "./dto/TweetDTO";
 
 class TweetAPI {
     static tweetsKey = "tweets";
     static initialTweets = [
-        new Tweet(0,
+        new TweetDTO(0,
             "../assets/profile.jpg",
             "Erez Bizo",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             false),
-        new Tweet(1,
+        new TweetDTO(1,
             "../assets/profile.jpg",
             "Erez Bizo",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             false),
-        new Tweet(2,
+        new TweetDTO(2,
             "../assets/profile.jpg",
             "Erez Bizo",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -26,7 +26,9 @@ class TweetAPI {
             try {
                 setTimeout(() => {
                     let tweets = JSON.parse(localStorage.getItem(this.tweetsKey)).reverse();
-
+                    if (filter !== undefined){
+                        tweets = tweets.filter(tweet => tweet.text.includes(filter));
+                    }
                     resolve(tweets);
                 }, 1000)
             } catch (error) {

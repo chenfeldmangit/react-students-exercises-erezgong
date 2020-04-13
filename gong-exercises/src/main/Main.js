@@ -2,21 +2,22 @@ import React, {useEffect, useState} from 'react';
 import Home from "./Home";
 import Profile from "./Profile";
 import PropTypes from "prop-types";
-import Tweet from "./Tweet";
+import TweetDTO from "./dto/TweetDTO";
+import Notifications from "./Notifications";
 
 function Main(props) {
     const initialTweets = [
-        new Tweet(0,
+        new TweetDTO(0,
             "../assets/profile.jpg",
             "Erez Bizo",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             false),
-        new Tweet(1,
+        new TweetDTO(1,
             "../assets/profile.jpg",
             "Erez Bizo",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             false),
-        new Tweet(2,
+        new TweetDTO(2,
             "../assets/profile.jpg",
             "Erez Bizo",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -77,6 +78,8 @@ function Main(props) {
                      likeTweetHandler={likeTweet}
                      deleteTweetHandler={deleteTweet}
                      loading={loading}/>}
+            {props.currentPage === "Notifications" &&
+            <Notifications/>}
         </>
     );
 }

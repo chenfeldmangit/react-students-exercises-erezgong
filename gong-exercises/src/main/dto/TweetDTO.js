@@ -1,4 +1,4 @@
-export class Tweet {
+export default class TweetDTO {
     constructor(id, profile, author, text, liked){
         this.id = id;
         this.profile = profile;
@@ -7,5 +7,3 @@ export class Tweet {
         this.liked = liked;
     }
 }
-
-export default Tweet;

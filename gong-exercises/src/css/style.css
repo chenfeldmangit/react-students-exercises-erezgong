@@ -165,7 +165,7 @@
   height: 2em;
 }
 .App #home .status-container .interaction .tweet {
-  margin-left: 9em;
+  margin-top: 0.3em;
 }
 .App #profile {
   display: flex;

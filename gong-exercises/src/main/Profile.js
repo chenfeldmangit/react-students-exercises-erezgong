@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 import Feed from "./Feed";
-import UserData from "./UserData";
 import PropTypes from "prop-types";
 import EditProfile from "./EditProfile";
+import MainTitle from "./MainTitle";
 
 class Profile extends Component {
     constructor(props) {
         super(props);
-        this.state = {userData: {}, editingProfile: false};
-    }
-
-    componentDidMount() {
-        this.setState({userData: JSON.parse(localStorage.getItem(UserData.userDataKey))});
+        this.state = {
+            userData: {
+                "cover": "../assets/profile/cover.jpg",
+                "profile": "../assets/profile.jpg",
+                "name": "Erez Bizo",
+                "tag": "@BizoErez",
+                "joinedDate": "March 2020",
+                "following": 34,
+                "followers": 1
+            },
+            editingProfile: false
+        };
     }
 
     startEditProfile = () => {
@@ -36,7 +43,7 @@ class Profile extends Component {
         return (
             <>
                 <div id="profile" className="main">
-                    <h2 className="title">Profile</h2>
+                    <MainTitle title="Profile"/>
                     <div className="info">
                         <div className="info-cover">
                             <img className="cover" src={this.state.userData.cover}/>

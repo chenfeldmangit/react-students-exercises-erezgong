@@ -1,63 +1,84 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import Home from "./Home";
 import Profile from "./Profile";
 import PropTypes from "prop-types";
-import TweetAPI from "./TweetAPI";
-import UserData from "./UserData";
+import Tweet from "./Tweet";
 
-class Main extends Component {
-    constructor(props){
-        super(props);
-        localStorage.setItem(TweetAPI.tweetsKey, JSON.stringify(TweetAPI.initialTweets));
-        localStorage.setItem(UserData.userDataKey, JSON.stringify(UserData.initialUserData));
-        this.state = {tweets: [], loading: true};
-    }
+function Main(props) {
+    const initialTweets = [
+        new Tweet(0,
+            "../assets/profile.jpg",
+            "Erez Bizo",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            false),
+        new Tweet(1,
+            "../assets/profile.jpg",
+            "Erez Bizo",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            false),
+        new Tweet(2,
+            "../assets/profile.jpg",
+            "Erez Bizo",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            false),
+    ];
 
-    refreshTweets = async () => {
-        this.setState({tweets: await TweetAPI.getTweets(this.state.filter), loading: false});
+    const [tweets, setTweets] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setTweets(initialTweets.reverse());
+            setLoading(false)
+        }, 1000)
+    }, []);
+
+    const addTweet = tweet => {
+        tweet.id = tweets.length;
+        setTweets([tweet, ...tweets]);
     };
 
-    componentDidMount = async () => {
-        this.refreshTweets();
+    const likeTweet = tweetId => {
+        const newTweets = [...tweets];
+        newTweets.forEach(tweet => {
+                if (tweet.id === parseInt(tweetId)) {
+                    tweet.liked = !tweet.liked;
+                }
+            }
+        );
+        setTweets(newTweets);
     };
 
-    addTweet = async (tweet) => {
-        await TweetAPI.addTweet(tweet);
-        this.refreshTweets();
+    const deleteTweet = async (tweetId) => {
+        let counter = 0;
+        const newTweets = tweets
+            .filter(tweet => tweet.id !== parseInt(tweetId))
+            .map(tweet => tweet.id = counter++);
+        setTweets(newTweets);
     };
 
-    likeTweet = async (tweetId) => {
-        await TweetAPI.likeTweet(tweetId);
-        this.refreshTweets();
-    };
-
-    deleteTweet = async (tweetId) => {
-        await TweetAPI.deleteTweet(tweetId);
-        this.refreshTweets();
-    };
-
-    filterTweets = (tweets, filter) => {
-        if (filter !== undefined){
+    const filterTweets = (tweets, filter) => {
+        if (filter !== undefined) {
             tweets = tweets.filter(tweet => tweet.text.includes(filter));
         }
         return tweets;
     };
 
-    render() {
-        return (
-            <>
-                {this.props.currentPage === "Home" && <Home tweets={this.filterTweets(this.state.tweets, this.props.filter)}
-                                                            addTweetHandler={this.addTweet}
-                                                            likeTweetHandler={this.likeTweet}
-                                                            deleteTweetHandler={this.deleteTweet}
-                                                            loading={this.state.loading}/>}
-                {this.props.currentPage === "Profile" && <Profile tweets={this.filterTweets(this.state.tweets, this.props.filter)}
-                                                                  likeTweetHandler={this.likeTweet}
-                                                                  deleteTweetHandler={this.deleteTweet}
-                                                                  loading={this.state.loading}/>}
-            </>
-        );
-    }
+    return (
+        <>
+            {props.currentPage === "Home" &&
+            <Home tweets={filterTweets(tweets, props.filter)}
+                  addTweetHandler={addTweet}
+                  likeTweetHandler={likeTweet}
+                  deleteTweetHandler={deleteTweet}
+                  loading={loading}/>}
+            {props.currentPage === "Profile" &&
+            <Profile tweets={filterTweets(tweets, props.filter)}
+                     likeTweetHandler={likeTweet}
+                     deleteTweetHandler={deleteTweet}
+                     loading={loading}/>}
+        </>
+    );
 }
 
 Main.propTypes = {

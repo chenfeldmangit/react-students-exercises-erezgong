@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Feed from "./Feed";
 import PropTypes from "prop-types";
 import {Tweet} from "./Tweet";
+import MainTitle from "./MainTitle";
 
 class Home extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Home extends Component {
     render() {
         return (
             <div id="home" className="main">
-                <h2 className="title"> Home</h2>
+                <MainTitle title="Home"/>
                 <div className="status-container">
                     <div className="status">
                         <img className="profile" src="../assets/profile.jpg" alt="profile"/>

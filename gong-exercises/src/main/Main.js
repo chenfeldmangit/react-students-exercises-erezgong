@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import PropTypes from "prop-types";
 import TweetDTO from "./dto/TweetDTO";
 import Notifications from "./Notifications";
+import {Route, Switch} from "react-router-dom";
 
 function Main(props) {
     const initialTweets = [
@@ -32,7 +33,7 @@ function Main(props) {
             setTweets(initialTweets.reverse());
             setLoading(false)
         }, 1000)
-    }, []);
+    }, [initialTweets]);
 
     const addTweet = tweet => {
         tweet.id = tweets.length;
@@ -67,25 +68,23 @@ function Main(props) {
 
     return (
         <>
-            {props.currentPage === "Home" &&
-            <Home tweets={filterTweets(tweets, props.filter)}
-                  addTweetHandler={addTweet}
-                  likeTweetHandler={likeTweet}
-                  deleteTweetHandler={deleteTweet}
-                  loading={loading}/>}
-            {props.currentPage === "Profile" &&
-            <Profile tweets={filterTweets(tweets, props.filter)}
-                     likeTweetHandler={likeTweet}
-                     deleteTweetHandler={deleteTweet}
-                     loading={loading}/>}
-            {props.currentPage === "Notifications" &&
-            <Notifications/>}
+            <Switch>
+                <Route path="/" component={() => <Home tweets={filterTweets(tweets, props.filter)}
+                                                       addTweetHandler={addTweet}
+                                                       likeTweetHandler={likeTweet}
+                                                       deleteTweetHandler={deleteTweet}
+                                                       loading={loading}/>} exact/>
+                <Route path="/profile" component={() => <Profile tweets={filterTweets(tweets, props.filter)}
+                                                           likeTweetHandler={likeTweet}
+                                                           deleteTweetHandler={deleteTweet}
+                                                           loading={loading}/>}/>
+                <Route path="/notifications" component={Notifications}/>
+            </Switch>
         </>
     );
 }
 
 Main.propTypes = {
-    currentPage: PropTypes.string.isRequired,
     filter: PropTypes.string
 };
 

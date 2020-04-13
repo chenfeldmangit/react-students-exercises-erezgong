@@ -61,25 +61,29 @@
   margin-bottom: 1em;
   display: flex;
 }
-.App #left-menu .item {
+.App #left-menu .link {
+  text-decoration: none;
+}
+.App #left-menu .link .item {
   display: flex;
   align-items: center;
   border: 0;
   width: 14em;
   padding: 0.25em;
   margin-bottom: 1em;
+  color: black;
 }
-.App #left-menu .item:hover {
+.App #left-menu .link .item:hover {
   border-radius: 1em;
   background-color: #beeaff;
 }
-.App #left-menu .item .icon {
+.App #left-menu .link .item .icon {
   width: 3em;
   height: 3em;
   border-radius: 50%;
   margin-left: 1em;
 }
-.App #left-menu .item .caption {
+.App #left-menu .link .item .caption {
   font-size: 1.3em;
   float: right;
   font-weight: bold;

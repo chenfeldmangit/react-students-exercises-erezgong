@@ -4,19 +4,16 @@ import LeftMenu from "./left-menu/LeftMenu";
 import './css/style.scss';
 import RightMenu from "./right-menu/RightMenu";
 import Main from "./main/Main";
+import {BrowserRouter} from "react-router-dom";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: "Home",
             filter: undefined
         };
     }
 
-    navigationHandler = (page) => {
-        this.setState({currentPage: page});
-    };
 
     searchHandler = (event) => {
         this.setState({filter: event.target.value});
@@ -24,11 +21,13 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <LeftMenu navigationHandler={this.navigationHandler}/>
-                <Main currentPage={this.state.currentPage} filter={this.state.filter}/>
-                <RightMenu searchHandler={this.searchHandler}/>
-            </div>
+            <BrowserRouter>
+                <div className="App">
+                    <LeftMenu/>
+                    <Main filter={this.state.filter}/>
+                    <RightMenu searchHandler={this.searchHandler}/>
+                </div>
+            </BrowserRouter>
         );
     }
 }

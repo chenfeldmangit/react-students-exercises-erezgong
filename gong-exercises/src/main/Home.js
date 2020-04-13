@@ -30,7 +30,7 @@ class Home extends Component {
                     </div>
                     <div className="interaction">
                         <div className="icon-wrapper">
-                            <img className="icon" src="../assets/home/interactions/picture.svg" alt="add-picture"/>
+                            <img className="icon" src="../assets/home/interactions/picture.svg" alt="add-pic"/>
                         </div>
                         <div className="icon-wrapper">
                             <img className="icon" src="../assets/home/interactions/gif.svg" alt="add-gif"/>

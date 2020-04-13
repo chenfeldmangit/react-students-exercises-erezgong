@@ -46,10 +46,10 @@ class Profile extends Component {
                     <MainTitle title="Profile"/>
                     <div className="info">
                         <div className="info-cover">
-                            <img className="cover" src={this.state.userData.cover}/>
+                            <img className="cover" src={this.state.userData.cover} alt="cover"/>
                         </div>
                         <div className="info-profile">
-                            <img className="profile" src={this.state.userData.profile}/>
+                            <img className="profile" src={this.state.userData.profile} alt="profile"/>
                             <div id="start-edit-profile" className="edit-profile big-button" onClick={this.startEditProfile}>
                                 <span className="caption">Edit Profile</span>
                             </div>
@@ -59,7 +59,7 @@ class Profile extends Component {
                                 <span className="name">{this.state.userData.name}</span>
                                 <span className="tag">{this.state.userData.tag}</span>
                                 <div className="joined">
-                                    <img className="calendar" src="../assets/profile/calendar.svg"/>
+                                    <img className="calendar" src="../assets/profile/calendar.svg" alt="calendar"/>
                                     <span className="joined-start">Joined</span>
                                     <span className="joined-date">{this.state.userData.joinedDate}</span>
                                 </div>

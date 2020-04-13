@@ -70,32 +70,37 @@
       display: flex;
     }
 
-    .item {
-      display: flex;
-      align-items: center;
-      border: 0;
-      width: 14em;
-      padding: 0.25em;
-      margin-bottom: 1em;
+    .link {
+      text-decoration: none;
 
-      &:hover {
-        border-radius: 1em;
-        background-color: $hover-item-color;
-      }
+      .item {
+        display: flex;
+        align-items: center;
+        border: 0;
+        width: 14em;
+        padding: 0.25em;
+        margin-bottom: 1em;
+        color: black;
 
-      .icon {
-        width: 3em;
-        height: 3em;
-        border-radius: 50%;
-        margin-left: 1em;
-      }
+        &:hover {
+          border-radius: 1em;
+          background-color: $hover-item-color;
+        }
 
-      .caption {
-        font-size: 1.3em;
-        float: right;
-        font-weight: bold;
-        vertical-align: middle;
-        padding-left: 1em;
+        .icon {
+          width: 3em;
+          height: 3em;
+          border-radius: 50%;
+          margin-left: 1em;
+        }
+
+        .caption {
+          font-size: 1.3em;
+          float: right;
+          font-weight: bold;
+          vertical-align: middle;
+          padding-left: 1em;
+        }
       }
     }
 

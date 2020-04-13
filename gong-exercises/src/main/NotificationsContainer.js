@@ -46,7 +46,7 @@ export default function NotificationsContainer(props) {
         )
     ];
 
-    const [notifications, setNotifications] = useState(initialNotifications);
+    const [notifications] = useState(initialNotifications);
 
     return (
         <div className="list">

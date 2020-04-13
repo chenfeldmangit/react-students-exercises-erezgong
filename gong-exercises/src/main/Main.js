@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import TweetDTO from "./dto/TweetDTO";
 import Notifications from "./Notifications";
 import {Route, Switch} from "react-router-dom";
+import useLocalStorage from "./customHooks/useLocalStorage";
 
 export default function Main(props) {
     const initialTweets = [
@@ -25,7 +26,7 @@ export default function Main(props) {
             false),
     ];
 
-    const [tweets, setTweets] = useState([]);
+    const [tweets, setTweets] = useLocalStorage("tweets", []);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -33,7 +34,7 @@ export default function Main(props) {
             setTweets(initialTweets.reverse());
             setLoading(false)
         }, 1000)
-    }, [initialTweets]);
+    }, []);
 
     const addTweet = tweet => {
         tweet.id = tweets.length;

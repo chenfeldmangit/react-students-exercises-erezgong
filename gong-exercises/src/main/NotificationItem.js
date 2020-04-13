@@ -29,8 +29,8 @@ const notificationType = PropTypes.shape({
     profile: PropTypes.isRequired,
     owner: PropTypes.string.isRequired,
     action: notificationActionType.isRequired,
-    object: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    object: PropTypes.string,
+    content: PropTypes.string,
 });
 
 

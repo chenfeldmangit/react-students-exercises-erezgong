@@ -5,6 +5,7 @@ import NotificationActionDTO from "./dto/NotificationActionDTO";
 import like from '../assets/notifications/like.svg';
 import follow from '../assets/notifications/follow.svg';
 import profile from "../assets/profile.jpg";
+import useLocalStorage from "./customHooks/useLocalStorage";
 
 export default function NotificationsContainer(props) {
     const notificationActions = {
@@ -46,7 +47,7 @@ export default function NotificationsContainer(props) {
         )
     ];
 
-    const [notifications] = useState(initialNotifications);
+    const [notifications] = useLocalStorage("notifications", initialNotifications);
 
     return (
         <div className="list">

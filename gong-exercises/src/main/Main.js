@@ -26,8 +26,8 @@ export default function Main(props) {
             false),
     ];
 
-    const [tweets, setTweets] = useLocalStorage("tweets", []);
     const [loading, setLoading] = useState(true);
+    const [tweets, setTweets] = useLocalStorage("tweets", []);
 
     useEffect(() => {
         setTimeout(() => {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-class EditProfile extends Component {
+export default class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,5 +70,3 @@ EditProfile.propTypes = {
     saveEditProfileHandler: PropTypes.func.isRequired,
     cancelEditProfileHandler: PropTypes.func.isRequired,
 };
-
-export default EditProfile;

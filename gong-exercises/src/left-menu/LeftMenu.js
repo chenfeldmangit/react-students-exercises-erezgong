@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import LeftMenuItem from './LeftMenuItem';
 import BugButton from "./BigButton";
 
-class LeftMenu extends Component {
+export default class LeftMenu extends Component {
     render() {
         return (
             <div id="left-menu" className="side-menu">
@@ -24,5 +24,3 @@ class LeftMenu extends Component {
 }
 
 LeftMenu.propTypes = {};
-
-export default LeftMenu;

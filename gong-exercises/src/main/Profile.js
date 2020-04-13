@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import EditProfile from "./EditProfile";
 import MainTitle from "./MainTitle";
 
-class Profile extends Component {
+export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -109,6 +109,3 @@ Profile.propTypes = {
     deleteTweetHandler: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired
 };
-
-
-export default Profile;

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 
-class LeftMenuItem extends Component {
+export default class LeftMenuItem extends Component {
     constructor(props) {
         super(props);
         this.id = "left-menu-" + this.props.caption;
@@ -20,11 +20,8 @@ class LeftMenuItem extends Component {
     }
 }
 
-
 LeftMenuItem.propTypes = {
     path: PropTypes.string.isRequired,
     caption: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired
 };
-
-export default LeftMenuItem;

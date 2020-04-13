@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TweetItem from "./TweetItem";
 import PropTypes from "prop-types";
 
-class Feed extends Component {
+export default class Feed extends Component {
     render() {
         return (
             <div className="feed">
@@ -24,5 +24,3 @@ Feed.propTypes = {
     deleteTweetHandler: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired
 };
-
-export default Feed;

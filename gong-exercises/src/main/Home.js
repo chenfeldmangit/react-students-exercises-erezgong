@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import TweetDTO from "./dto/TweetDTO";
 import MainTitle from "./MainTitle";
 
-class Home extends Component {
+export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {status: ""};
@@ -72,5 +72,3 @@ Home.propTypes = {
     deleteTweetHandler: PropTypes.func.isRequired,
     addTweetHandler: PropTypes.func.isRequired
 };
-
-export default Home;

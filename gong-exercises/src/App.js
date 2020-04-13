@@ -6,14 +6,13 @@ import RightMenu from "./right-menu/RightMenu";
 import Main from "./main/Main";
 import {BrowserRouter} from "react-router-dom";
 
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             filter: undefined
         };
     }
-
 
     searchHandler = (event) => {
         this.setState({filter: event.target.value});
@@ -31,5 +30,3 @@ class App extends Component {
         );
     }
 }
-
-export default App;

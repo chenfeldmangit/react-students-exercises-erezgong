@@ -1,6 +1,6 @@
 import TweetDTO from "./dto/TweetDTO";
 
-class TweetAPI {
+export default class TweetAPI {
     static tweetsKey = "tweets";
     static initialTweets = [
         new TweetDTO(0,
@@ -63,5 +63,3 @@ class TweetAPI {
         localStorage.setItem(this.tweetsKey, JSON.stringify(tweets));
     }
 }
-
-export default TweetAPI;

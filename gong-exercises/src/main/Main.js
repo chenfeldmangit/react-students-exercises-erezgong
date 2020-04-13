@@ -6,7 +6,7 @@ import TweetDTO from "./dto/TweetDTO";
 import Notifications from "./Notifications";
 import {Route, Switch} from "react-router-dom";
 
-function Main(props) {
+export default function Main(props) {
     const initialTweets = [
         new TweetDTO(0,
             "../assets/profile.jpg",
@@ -87,5 +87,3 @@ function Main(props) {
 Main.propTypes = {
     filter: PropTypes.string
 };
-
-export default Main;

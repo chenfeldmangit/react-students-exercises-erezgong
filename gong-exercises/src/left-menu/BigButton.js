@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class BugButton extends Component {
+export default class BugButton extends Component {
     render() {
         return (
             <div className="tweet big-button">
@@ -14,5 +14,3 @@ class BugButton extends Component {
 BugButton.propTypes = {
     caption: PropTypes.string.isRequired,
 };
-
-export default BugButton;

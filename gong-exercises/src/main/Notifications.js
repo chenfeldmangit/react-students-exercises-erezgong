@@ -3,7 +3,7 @@ import MainTitle from "./MainTitle";
 import NotificationsContainer from "./NotificationsContainer";
 import '../css/notifications.scss';
 
-function Notifications(props) {
+export default function Notifications(props) {
     return (
         <div id="notifications" className="main">
             <MainTitle title="Notifications"/>
@@ -13,5 +13,3 @@ function Notifications(props) {
 }
 
 Notifications.propTypes = {};
-
-export default Notifications;

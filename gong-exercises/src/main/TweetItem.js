@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class TweetItem extends Component {
+export default class TweetItem extends Component {
     render() {
         return (
             <div className="tweet" data-id={this.props.data.id}>
@@ -78,5 +78,3 @@ TweetItem.propTypes = {
     likeTweetHandler: PropTypes.func.isRequired,
     deleteTweetHandler: PropTypes.func.isRequired
 };
-
-export default TweetItem;

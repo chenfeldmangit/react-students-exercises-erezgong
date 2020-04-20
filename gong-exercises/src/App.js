@@ -9,10 +9,10 @@ import Start from "./users/Start";
 import {connect} from "react-redux";
 
 function App(props) {
-    const [filter, setFilter] = useState(undefined);
+    const [filter, setFilter] = useState('');
 
     const searchHandler = (event) => {
-        setFilter({filter: event.target.value});
+        setFilter(event.target.value);
     };
 
     return (
@@ -29,7 +29,7 @@ function App(props) {
 
 const mapStateToProps = (store) => {
     return {
-        users: store
+        users: store.users
     };
 };
 

@@ -10,7 +10,7 @@ export default class Feed extends Component {
                 <div id="loading">
                     <img src="../assets/loading.gif" alt="loading"/>
                 </div>}
-                {this.props.tweets.map(tweet => {
+                {!this.props.loading && this.props.tweets.map(tweet => {
                     return <TweetItem key={tweet.id} data={tweet} likeTweetHandler={this.props.likeTweetHandler} deleteTweetHandler={this.props.deleteTweetHandler}/>
                 })}
             </div>

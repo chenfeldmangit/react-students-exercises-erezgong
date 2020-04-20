@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function FormItem(props) {
+export default function FormTextItem(props) {
     return (
-        <div id={props.id} className="form-item">
+        <div className="form-item">
             <span className="caption">{props.caption}</span>
             <textarea className="box" maxLength={props.maxLength} value={props.currentValue}
                       onChange={props.fieldChange}/>
@@ -12,8 +12,7 @@ export default function FormItem(props) {
     );
 }
 
-FormItem.propTypes = {
-    id: PropTypes.string.isRequired,
+FormTextItem.propTypes = {
     caption: PropTypes.string.isRequired,
     maxLength: PropTypes.string.isRequired,
     currentValue: PropTypes.string.isRequired,

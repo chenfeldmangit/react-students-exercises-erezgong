@@ -28,6 +28,7 @@
     height: 1.7em;
     font-size: 2em;
     font-weight: bold;
+    margin-bottom: 0.5em;
 
     .caption {
       font-family: inherit;
@@ -52,6 +53,16 @@
       font-weight: bold;
       align-self: center;
     }
+  }
+
+  #start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
   }
 
   #left-menu {

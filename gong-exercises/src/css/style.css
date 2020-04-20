@@ -25,6 +25,7 @@
   height: 1.7em;
   font-size: 2em;
   font-weight: bold;
+  margin-bottom: 0.5em;
 }
 .App .big-button .caption {
   font-family: inherit;
@@ -46,6 +47,15 @@
   color: white;
   font-weight: bold;
   align-self: center;
+}
+.App #start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .App #left-menu {
   width: 20%;

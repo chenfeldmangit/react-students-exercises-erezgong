@@ -1,32 +1,39 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import './css/App.scss';
 import LeftMenu from "./left-menu/LeftMenu";
 import './css/style.scss';
 import RightMenu from "./right-menu/RightMenu";
 import Main from "./main/Main";
 import {BrowserRouter} from "react-router-dom";
+import Start from "./users/Start";
+import {connect} from "react-redux";
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filter: undefined
-        };
-    }
+function App(props) {
+    const [filter, setFilter] = useState(undefined);
 
-    searchHandler = (event) => {
-        this.setState({filter: event.target.value});
+    const searchHandler = (event) => {
+        setFilter({filter: event.target.value});
     };
 
-    render() {
-        return (
-            <BrowserRouter>
-                <div className="App">
-                    <LeftMenu/>
-                    <Main filter={this.state.filter}/>
-                    <RightMenu searchHandler={this.searchHandler}/>
-                </div>
-            </BrowserRouter>
-        );
-    }
+    return (
+        <BrowserRouter>
+            <div className="App">
+                {!props.users.currentUser && <Start/>}
+                {props.users.currentUser && <LeftMenu/>}
+                {props.users.currentUser && <Main filter={filter}/>}
+                {props.users.currentUser && <RightMenu searchHandler={searchHandler}/>}
+            </div>
+        </BrowserRouter>
+    );
 }
+
+const mapStateToProps = (store) => {
+    return {
+        users: store
+    };
+};
+
+export default connect(mapStateToProps)(App);
+
+
+

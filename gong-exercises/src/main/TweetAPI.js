@@ -1,7 +1,6 @@
 import TweetDTO from "./dto/TweetDTO";
 
 export default class TweetAPI {
-    static tweetsKey = "tweets";
     static initialTweets = [
         new TweetDTO(0,
             "../assets/profile.jpg",
@@ -20,15 +19,13 @@ export default class TweetAPI {
             false),
     ];
 
+    static tweetsKey = "tweets";
 
-    static getTweets = filter => {
+    static getTweets = () => {
         return new Promise((resolve, reject) => {
             try {
                 setTimeout(() => {
-                    let tweets = JSON.parse(localStorage.getItem(this.tweetsKey)).reverse();
-                    if (filter !== undefined){
-                        tweets = tweets.filter(tweet => tweet.text.includes(filter));
-                    }
+                    let tweets = JSON.parse(localStorage.getItem(this.tweetsKey));
                     resolve(tweets);
                 }, 1000)
             } catch (error) {

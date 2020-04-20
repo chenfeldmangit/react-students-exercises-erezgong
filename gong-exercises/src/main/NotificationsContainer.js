@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import NotificationDTO from "./dto/NotificationDTO";
 import NotificationItem from "./NotificationItem";
 import NotificationActionDTO from "./dto/NotificationActionDTO";
@@ -7,7 +7,7 @@ import follow from '../assets/notifications/follow.svg';
 import profile from "../assets/profile.jpg";
 import useLocalStorage from "./customHooks/useLocalStorage";
 
-export default function NotificationsContainer(props) {
+export default function NotificationsContainer() {
     const notificationActions = {
         like: new NotificationActionDTO(
             "like",

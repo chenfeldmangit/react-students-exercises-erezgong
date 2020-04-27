@@ -1,32 +1,49 @@
-export const GET_TWEETS = 'GET_TWEETS';
-export const ADD_TWEET = 'ADD_TWEET';
-export const LIKE_TWEET = 'LIKE_TWEET';
-export const DELETE_TWEET = 'DELETE_TWEET';
+export const TweetsActions = {
+    GET_TWEETS: 'GET_TWEETS',
+    ADD_TWEET: 'ADD_TWEET',
+    LIKE_TWEET_REQUEST: 'LIKE_TWEET_REQUEST',
+    LIKE_TWEET_SUCCESS: 'LIKE_TWEET_SUCCESS',
+    LIKE_TWEET_FAIL: 'LIKE_TWEET_FAIL',
+    DELETE_TWEET: 'DELETE_TWEET'
+};
 
 export const getTweetsAction = (tweets) => {
     return {
-        type: GET_TWEETS,
+        type: TweetsActions.GET_TWEETS,
         tweets: tweets
     };
 };
 
 export const addTweetAction = (tweet) => {
     return {
-        type: ADD_TWEET,
+        type: TweetsActions.ADD_TWEET,
         tweet: tweet
     };
 };
 
-export const likeTweetAction = (tweedId) => {
+export const likeTweetRequestAction = (tweedId) => {
     return {
-        type: LIKE_TWEET,
+        type: TweetsActions.LIKE_TWEET_REQUEST,
         tweetId: tweedId
+    };
+};
+
+export const likeTweetSuccessAction = (tweedId) => {
+    return {
+        type: TweetsActions.LIKE_TWEET_SUCCESS,
+        tweetId: tweedId
+    };
+};
+
+export const likeTweetFailAction = () => {
+    return {
+        type: TweetsActions.LIKE_TWEET_FAIL,
     };
 };
 
 export const deleteTweetAction = (tweedId) => {
     return {
-        type: DELETE_TWEET,
+        type: TweetsActions.DELETE_TWEET,
         tweetId: tweedId
     };
 };

@@ -7,8 +7,13 @@ import Main from "./main/Main";
 import {BrowserRouter} from "react-router-dom";
 import Start from "./users/Start";
 import {connect} from "react-redux";
+import TweetAPI from "./main/TweetAPI";
 
 function App(props) {
+    localStorage.setItem(TweetAPI.tweetsKey, JSON.stringify(TweetAPI.initialTweets));
+    localStorage.setItem(TweetAPI.notificationsKey, JSON.stringify(TweetAPI.initialNotifications));
+
+
     const [filter, setFilter] = useState('');
 
     const searchHandler = (event) => {

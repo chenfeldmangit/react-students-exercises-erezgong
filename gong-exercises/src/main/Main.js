@@ -4,18 +4,21 @@ import Profile from "./Profile";
 import PropTypes from "prop-types";
 import Notifications from "./Notifications";
 import {Route, Switch} from "react-router-dom";
-import {addTweetAction, deleteTweetAction, getTweetsAction, likeTweetAction} from "./tweets/tweetsActions";
+import {addTweetAction, deleteTweetAction, getTweetsAction, likeTweetRequestAction} from "./tweets/tweetsActions";
 import {connect} from "react-redux";
 import TweetAPI from "./TweetAPI";
 
 function Main(props) {
     const [loading, setLoading] = useState(true);
-    localStorage.setItem(TweetAPI.tweetsKey, JSON.stringify(TweetAPI.initialTweets));
 
-    useEffect(async () => {
-        const tweets = await TweetAPI.getTweets();
-        props.getTweets(tweets);
-        setLoading(false);
+    useEffect(() => {
+        async function getTweets() {
+            const tweets = await TweetAPI.getTweets();
+            props.getTweets(tweets);
+            setLoading(false);
+        }
+        // noinspection JSIgnoredPromiseFromCall
+        getTweets();
     }, []);
 
     const filterTweets = (tweets, filter) => {
@@ -59,8 +62,7 @@ const mapDispatchToProps = (dispatch) => {
             TweetAPI.addTweet(tweet)
         },
         likeTweet: tweetId => {
-            dispatch(likeTweetAction(tweetId));
-            TweetAPI.likeTweet(tweetId)
+            dispatch(likeTweetRequestAction(tweetId));
         },
         deleteTweet: tweetId => {
             dispatch(deleteTweetAction(tweetId));

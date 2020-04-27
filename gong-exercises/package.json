@@ -15,7 +15,8 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "sass": "^1.26.3"
+    "sass": "^1.26.3",
+    "redux-saga": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

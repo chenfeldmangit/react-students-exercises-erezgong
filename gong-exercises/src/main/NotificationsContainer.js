@@ -1,62 +1,43 @@
-import React from 'react';
-import NotificationDTO from "./dto/NotificationDTO";
+import React, {useEffect} from 'react';
 import NotificationItem from "./NotificationItem";
-import NotificationActionDTO from "./dto/NotificationActionDTO";
-import like from '../assets/notifications/like.svg';
-import follow from '../assets/notifications/follow.svg';
-import profile from "../assets/profile.jpg";
-import useLocalStorage from "./customHooks/useLocalStorage";
+import TweetAPI from "./TweetAPI";
+import {connect} from "react-redux";
+import {getNotificationsAction} from "./notifications/notificationsActions";
 
-export default function NotificationsContainer() {
-    const notificationActions = {
-        like: new NotificationActionDTO(
-            "like",
-            "liked",
-            "your",
-            like
-        ),
-        follow: new NotificationActionDTO(
-            "follow",
-            "followed",
-            "you",
-            follow
-        )
-    };
-
-    const initialNotifications = [
-        new NotificationDTO(0,
-            profile,
-            "Erez Bizo",
-            notificationActions.like,
-            "tweet",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        ),
-        new NotificationDTO(1,
-            profile,
-            "Erez Bizo",
-            notificationActions.like,
-            "reply",
-            "Amazing!",
-        ),
-        new NotificationDTO(2,
-            profile,
-            "Erez Bizo",
-            notificationActions.follow,
-            null,
-            null
-        )
-    ];
-
-    const [notifications] = useLocalStorage("notifications", initialNotifications);
+function NotificationsContainer(props) {
+    useEffect(() => {
+        async function getNotifications() {
+            const notifications = await TweetAPI.getNotifications();
+            props.getNotifications(notifications.reverse());
+        }
+        // noinspection JSIgnoredPromiseFromCall
+        getNotifications();
+    }, []);
 
     return (
         <div className="list">
-            {notifications.map(notification => {
+            {props.notifications.map(notification => {
                 return <NotificationItem key={notification.id} data={notification}/>
             })}
         </div>
     );
 }
+
+const mapStateToProps = (store) => {
+    return {
+        notifications: store.notifications
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getNotifications: notifications => {
+            dispatch(getNotificationsAction(notifications))
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotificationsContainer);
 
 NotificationsContainer.propTypes = {};
 

@@ -61,7 +61,7 @@ export default class TweetAPI {
             null,
             null
         )
-    ];
+    ].reverse();
 
     static tweetsKey = "tweets";
     static notificationsKey = "notifications";
@@ -145,7 +145,7 @@ export default class TweetAPI {
             "tweet",
             tweets[tweetId].text,
         );
-        localStorage.setItem(this.notificationsKey, JSON.stringify([...notifications, notification]));
+        localStorage.setItem(this.notificationsKey, JSON.stringify([notification, ...notifications]));
         return notification;
     };
 }

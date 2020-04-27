@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './css/App.scss';
 import LeftMenu from "./left-menu/LeftMenu";
 import './css/style.scss';
@@ -8,10 +8,20 @@ import {BrowserRouter} from "react-router-dom";
 import Start from "./users/Start";
 import {connect} from "react-redux";
 import TweetAPI from "./main/TweetAPI";
+import {getNotificationsAction} from "./main/notifications/notificationsActions";
 
 function App(props) {
     localStorage.setItem(TweetAPI.tweetsKey, JSON.stringify(TweetAPI.initialTweets));
     localStorage.setItem(TweetAPI.notificationsKey, JSON.stringify(TweetAPI.initialNotifications));
+
+    useEffect(() => {
+        async function getNotifications() {
+            const notifications = await TweetAPI.getNotifications();
+            props.getNotifications(notifications);
+        }
+        // noinspection JSIgnoredPromiseFromCall
+        getNotifications();
+    }, []);
 
 
     const [filter, setFilter] = useState('');
@@ -34,11 +44,20 @@ function App(props) {
 
 const mapStateToProps = (store) => {
     return {
-        users: store.users
+        users: store.users,
+        tweets: store.tweets,
+        notifications: store.notifications
     };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getNotifications: notifications => {
+            dispatch(getNotificationsAction(notifications))
+        }
+    };
+};
 
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 

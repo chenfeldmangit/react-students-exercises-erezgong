@@ -3,8 +3,9 @@ import LeftMenuItem from './LeftMenuItem';
 import BigButton from "../common/BigButton";
 import store from "../store";
 import {signOutAction} from "../users/usersActions";
+import {connect} from "react-redux";
 
-export default function LeftMenu(props) {
+function LeftMenu(props) {
     const signOutDispatch = () => {
         store.dispatch(signOutAction());
     };
@@ -15,7 +16,7 @@ export default function LeftMenu(props) {
             <div className="list">
                 <LeftMenuItem icon="../assets/home/side-menu/home-icon.svg" caption="Home" path="/"/>
                 <LeftMenuItem icon="../assets/home/side-menu/explore-icon.svg" caption="Explore" path="/explore"/>
-                <LeftMenuItem icon="../assets/home/side-menu/notifications-icon.svg" caption="Notifications"
+                <LeftMenuItem icon="../assets/home/side-menu/notifications-icon.svg" caption={`Notifications (${props.notifications.length})`}
                               path="/notifications"/>
                 <LeftMenuItem icon="../assets/home/side-menu/messages-icon.svg" caption="Messages" path="/messages"/>
                 <LeftMenuItem icon="../assets/home/side-menu/bookmarks-icon.svg" caption="Bookmarks" path="/bookmarks"/>
@@ -29,4 +30,10 @@ export default function LeftMenu(props) {
     );
 }
 
-LeftMenu.propTypes = {};
+const mapStateToProps = (store) => {
+    return {
+        notifications: store.notifications
+    };
+};
+
+export default connect(mapStateToProps)(LeftMenu);

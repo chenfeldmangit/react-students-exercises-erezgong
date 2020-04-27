@@ -7,7 +7,7 @@ const notificationsReducer = (state = initialState, action) => {
         case NotificationsActions.GET_NOTIFICATIONS:
             return action.notifications;
         case NotificationsActions.ADD_NOTIFICATION_SUCCESS:
-            return [...state, action.notification];
+            return [action.notification, ...state];
         default:
             return state;
     }
